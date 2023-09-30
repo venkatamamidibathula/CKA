@@ -1,4 +1,5 @@
-The certificate API is used to sign certificate requests requested by users who would like to join the cluster 
+The certificate API is used to sign certificate requests requested by users who would like to join the cluster.
+Control Manager is responsible for signing and approving certificates
 
 As part of the process. Below are the steps the users perform:
 
@@ -26,6 +27,7 @@ echo " " | base64 --decode
 
 #8. To approve a csr 
 kubectl certificate approve <nameofcsr>
+==================================================================================
 
 #9 . To get more information about CSR
 kubectl get csr agent-smith -o yaml
@@ -34,4 +36,9 @@ kubectl get csr agent-smith -o yaml
 kubectl certificate deny agent-smith
 
 #11. To Delete a CSR 
-kubectl delete csr agent-smith 
+kubectl delete csr agent-smith
+
+====================================================================================
+
+![Alt text](image.png)
+
