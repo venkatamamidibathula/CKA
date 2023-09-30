@@ -40,5 +40,15 @@ kubectl delete csr agent-smith
 
 ====================================================================================
 
+Kubectl Config
+
 ![Alt text](image.png)
+
+# To see the context 
+kubectl config view 
+
+# To switch context 
+kubectl config use-context {user}@{cluster}
+Example: kubectl config use-context prod-user@production
+context is nothing but combination of {user}@{cluster}
 
