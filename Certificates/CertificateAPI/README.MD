@@ -52,3 +52,23 @@ kubectl config use-context {user}@{cluster}
 Example: kubectl config use-context prod-user@production
 context is nothing but combination of {user}@{cluster}
 
+
+
+#I would like to use the dev-user to access test-cluster-1. Set the current context to the right one so I can do that.
+kubectl config --kubeconfig=/root/my-kube-config use-context research
+
+
+#We don't want to have to specify the kubeconfig file option on each command. Make the my-kube-config file the default kubeconfig.
+Replace the contents in the default kubeconfig file with the content from my-kube-config file
+The local of default config can be found in ls -a -> .kube -> config
+
+# To know the current context
+kubectl config current-context
+
+
+==============================================================================================
+
+
+
+
+
