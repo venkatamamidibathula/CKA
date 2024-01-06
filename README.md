@@ -35,7 +35,7 @@ In **kubelet.service** file there is a parameter where you specify the value.
 
 ---
 
-###***Logging and Monitoring***
+### ***Logging and Monitoring***
 
 Kubernetes previously had heapster that is used for logging and monitoring but its deprecated.
 
