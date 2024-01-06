@@ -41,4 +41,11 @@ Kubernetes previously had heapster that is used for logging and monitoring but i
 
 Metrics server is monitoring service available currently on kubernetes that is in-memory. We can only view current metrics but historical  data will not be available for that we can make use of propreitary tools like Datadog, Prometheus etc.
 
+kubelet also contains a sub-component called Cadvisor which is responsible for retrieving perforamnce metrics from PODS and exposing them through the kubelet api for metrics to be available for metrics server.
 
+**Metrics server**= https://github.com/kubernetes-incubator/metrics-server.git
+
+kubectl create -f deploy/1.8+/
+
+kubectl top node
+kubectl top pod
