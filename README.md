@@ -24,9 +24,8 @@ In **kubelet.service** file there is a parameter where you specify the value.
 
 **Static pods are not dependent on control plane we can use static pods to deploy control plane components as pods on cluster**
 
-** Differences between static pods and Daemon Sets**
 
-
+**Differences between static pods and Daemon Sets**
 | Static Pods | Daemon Sets |
 |-------------|-------------|
 | Created by Kubelet                                 | Created by kubeapi server                                     |
