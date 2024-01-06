@@ -15,7 +15,7 @@ We can only create PODS this way not replicasets, deployments.
 
 In **kubelet.service** file there is a parameter where you specify the value.
 
-**--pod-manifest-path** = /etc/kubernetes/manfiests \\ or **--config** = kubeconfig.yaml where inside the yaml file you mention. 
+**--pod-manifest-path** = /etc/kubernetes/manfiests \\ or **--kubeconfig** = /var/lib/kubelet/kubeconfig \\ where inside the yaml file you mention. 
 
 
 > kubeconfig.yaml
