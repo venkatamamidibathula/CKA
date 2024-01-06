@@ -1,5 +1,4 @@
 # CKA
-CKA
 
 ### ***Scheduling***
 
