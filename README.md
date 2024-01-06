@@ -28,9 +28,9 @@ In **kubelet.service** file there is a parameter where you specify the value.
 
 
 | Static Pods | Daemon Sets |
-|----------|----------|----------|
-| Created by Kubelet | Created by kubeapi server  |
+|-------------|-------------|
+| Created by Kubelet                                 | Created by kubeapi server                                     |
 | Best suited for deploying control plane components | Best suited for deploying monitoring agents, log aggregations |
-| Ignored by kube-scheduler | Ignored by kube-scheduler | 
+| Ignored by kube-scheduler                          | Ignored by kube-scheduler                                     | 
 
 
