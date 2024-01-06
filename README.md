@@ -11,7 +11,7 @@ The path where the pod definition files need to be kept are below
 
 **Path** = **/etc/kubernetes/manifests**
 
-We can only create PODS this way not replicasets
+We can only create PODS this way not replicasets, deployments.
 
 In **kubelet.service** file there is a parameter where you specify the value.
 
