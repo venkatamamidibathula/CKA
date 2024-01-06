@@ -22,4 +22,7 @@ In **kubelet.service** file there is a parameter where you specify the value.
 >
 >**staticPodPath** : /etc/kubernetes/manifests
 
+**Static pods are not dependent on control plane we can use static pods to deploy control plane components as pods on cluster**
+
+
 
