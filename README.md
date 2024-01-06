@@ -33,3 +33,12 @@ In **kubelet.service** file there is a parameter where you specify the value.
 | Ignored by kube-scheduler                          | Ignored by kube-scheduler                                     | 
 
 
+---
+
+###***Logging and Monitoring***
+
+Kubernetes previously had heapster that is used for logging and monitoring but its deprecated.
+
+Metrics server is monitoring service available currently on kubernetes that is in-memory. We can only view current metrics but historical  data will not be available for that we can make use of propreitary tools like Datadog, Prometheus etc.
+
+
