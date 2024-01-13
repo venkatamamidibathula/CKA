@@ -49,3 +49,5 @@ kubectl create -f deploy/1.8+/
 
 kubectl top node
 kubectl top pod
+
+![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/Metrics.png)
