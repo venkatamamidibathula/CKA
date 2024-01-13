@@ -45,6 +45,7 @@ kubelet also contains a sub-component called **Cadvisor** which is responsible f
 
 **Metrics server**= https://github.com/kubernetes-incubator/metrics-server.git
 
+git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f deploy/1.8+/
 
 kubectl top node
