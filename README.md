@@ -115,6 +115,7 @@ Environment variables are defined in three ways:
 The config maps are key value pairs which can store value and we can refer these config maps in pod definition file for parsing environment values
 
 '''yaml
+
 apiVersio: v1
 kind: ConfigMap
 metadata:
