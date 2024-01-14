@@ -104,4 +104,8 @@ To undo the rollout of deployment we use the command **kubectl rollout undo {nam
 >
 > The value 5 gets appended to sleep command
 
+Environment variables are defined in three ways:
 
+- **Plain Key value pairs**
+- **Config maps**
+- **Sec key references**
