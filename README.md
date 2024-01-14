@@ -127,3 +127,5 @@ data:
 
 
 **To create a pod definition out a running pod : kubectl get pod <pod-name> --output=yaml > pod-definition.yaml**
+
+
