@@ -78,6 +78,30 @@ Default deployment strategy is rolling update. There is another strategy which i
 
 **kubectl get replicasets**.
 
+To undo the rollout of deployment we use the command **kubectl rollout undo {nameofdeployment}**
 
+
+**CMD** parameter in docker works in a way where in the runtime parameters will replace the CMD parameters defined in docker file.
+
+**ENTRYPOINT** parameter in docker works in a way where in the run time parameters get appended to entrypoint command.
+
+
+> docker file: ubuntusleep
+>
+> from ubuntu
+>
+> CMD ["sleep","5"]
+>
+> docker run ubuntusleep sleep 10
+>
+> docker file: ubuntusleep 
+>
+> from ubuntu
+>
+> ENTRYPOINT ["SLEEP"]
+>
+> docker run ubuntusleep 5 
+>
+> The value 5 gets appended to sleep command
 
 
