@@ -108,4 +108,4 @@ Environment variables are defined in three ways:
 
 - **Plain Key value pairs**
 - **Config maps**
-- **Sec key references**
+- **Secret keys**
