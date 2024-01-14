@@ -123,3 +123,4 @@ data:
   APP_MODE: prod
 
 
+![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/ConfigMaps.png)
