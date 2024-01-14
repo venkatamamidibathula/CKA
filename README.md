@@ -126,4 +126,4 @@ data:
 ![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/ConfigMaps.png)
 
 
-** To create a pod definition out a running pod : kubectl get pod <pod-name> --output=yaml > pod-definition.yaml **
+**To create a pod definition out a running pod : kubectl get pod <pod-name> --output=yaml > pod-definition.yaml**
