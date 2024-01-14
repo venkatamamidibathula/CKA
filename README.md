@@ -52,3 +52,32 @@ kubectl top node
 kubectl top pod
 
 ![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/Metrics.png)
+
+---
+
+### ***Application Lifecycle Management ***
+
+
+
+To check the status of rollout use the command **kubectl rollout {nameofdeployment}**.
+
+To see the history of rollout **kubectl rollout {nameofdeployment}**.
+
+
+**Deployment Startegy**
+
+Default deployment strategy is rolling update. There is another strategy which is recreate.
+
+**kubectl apply -f {deploymentdefinition.yaml}**.
+
+**kubectl set image {nameofdeployment} {updated version}** -> **kubectl set image deployment/myapp-deployment \nginx-container=nginx:1.9.1**.
+
+
+**kubectl describe deployment** can be used to identify if the deployment is rolling or recreate.
+
+
+**kubectl get replicasets**.
+
+
+
+
