@@ -272,4 +272,26 @@ You may need to reload the daemon and restart kubelet service after it has been 
 
 ---
 
+**To upgrade node01 follow the below steps**
+
+If you are on controlplane ssh into node01
+**ssh nodeo1**
+
+
+**apt update**
+This will update the package lists from the software repository.
+
+**apt-get install kubeadm=1.27.0-00**
+This will install the kubeadm version 1.27.0
+
+**kubeadm upgrade node**
+This will upgrade Kubernetes worker node.
+
+**apt-get install kubelet=1.27.0-00**
+This will update the kubelet with the version 1.27.0 because kubelet will not updated by kubeadm.
+
+
+**systemctl daemon-reload**
+**systemctl restart kubelet**
+You may need to reload the daemon and restart kubelet service after it has been upgraded.
 
