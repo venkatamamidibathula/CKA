@@ -214,11 +214,23 @@ All the control plane components (kubeapi server, kubelet, kubeproxy, kubeschedu
 
 **Version upgrade in Kubernetes**
 
-kubeapi server is the heart of all control plane components. So you should always have it as the highest version
+kubeapi server is the heart of all control plane components. So you should always have it as the highest version.
 
+The controller-manager and kubescheduler can be one version lesser than kubeapi server but never greater than kubeapi server version.
+
+The kubelet and kubeproxy can be two versions lower than kubeapi server but never greater than kubeapi server version.
 
 
 ![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/versionupgrade.png)
 
 
+The server upgrade process complexity depends on how its setup.
+
+If the kubernetes is setup on cloud managed platform like GKE the process will be pretty staright forward.
+
+If the kubernetes is setup using kubeadm tool, you have to upgrade the kubeadm tool first, then master node and then worker nodes.
+
+**Note**: When you upgrade the nodes using the kubeadm tool only controlplane components get upgraded not the kubelet so you have to explicitly upgrade kubelet when upgrading using the kubeadmin tool.
+
+When setup your cluster using the kubeadm tool all the control plane components will be deployed as pods in master node therefore there is a presence of kubelet on master node when using the kubeadm tool.
 
