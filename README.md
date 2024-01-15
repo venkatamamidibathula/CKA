@@ -1,5 +1,18 @@
 # CKA
 
+---
+
+
+**Commands**
+
+| Static Pods | Daemon Sets |
+|-------------|-------------|
+| kubectl drain <nodename>                                | Created by kubeapi server                                     |
+| kubectl cordon <nodename>                               | To make the node as unschedulable                             |
+| kubectl uncordon <nodename>                             | To make the node back as schedulable                          | 
+
+---
+
 ### ***Scheduling***
 
 ----
@@ -183,3 +196,16 @@ spec:
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done;']
 
 ```
+
+---
+
+### ***Cluster Maintenance***
+
+Whenver a node goes down the pods inside the node also goes down.
+If the node comes back online within 5 minutes the pods will be made available on that node.
+
+Suppose if the node does not come back online the pods will be evicted. The time it takes to for the pods to be come back online is pod eviction timeout.
+
+Default pod eviction timeout is 5 minutes. If a node goes offline master node waits for 5 minutes to check if the node comes back online.
+
+
