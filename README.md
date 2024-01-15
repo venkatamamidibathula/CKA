@@ -5,11 +5,11 @@
 
 **Commands**
 
-| Static Pods | Daemon Sets |
+| Command     | Description |
 |-------------|-------------|
-| kubectl drain <nodename>                                | Created by kubeapi server                                     |
-| kubectl cordon <nodename>                               | To make the node as unschedulable                             |
-| kubectl uncordon <nodename>                             | To make the node back as schedulable                          | 
+| kubectl drain {nodename}                                | Created by kubeapi server                                     |
+| kubectl cordon {nodename}                               | To make the node as unschedulable                             |
+| kubectl uncordon {nodename}                             | To make the node back as schedulable                          | 
 
 ---
 
