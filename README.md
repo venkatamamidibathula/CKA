@@ -216,9 +216,9 @@ All the control plane components (kubeapi server, kubelet, kubeproxy, kubeschedu
 
 kubeapi server is the heart of all control plane components. So you should always have it as the highest version
 
-Start --> Process 1 -->  Process 2 --> End
 
 
+![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/Version Upgrade.png)
 
 
 
