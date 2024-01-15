@@ -269,6 +269,7 @@ This will update the kubelet with the version 1.27.0
 **systemctl daemon-reload**
 **systemctl restart kubelet**
 You may need to reload the daemon and restart kubelet service after it has been upgraded.
+
 ---
 
 
