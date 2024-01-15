@@ -218,7 +218,7 @@ kubeapi server is the heart of all control plane components. So you should alway
 
 
 
-![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/Version Upgrade.png)
+![Alt Text](https://github.com/venkatamamidibathula/CKA/blob/develop/versionupgrade.png)
 
 
 
