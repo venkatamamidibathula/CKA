@@ -208,4 +208,17 @@ Suppose if the node does not come back online the pods will be evicted. The time
 
 Default pod eviction timeout is 5 minutes. If a node goes offline master node waits for 5 minutes to check if the node comes back online.
 
+**Kubernetes Software Versions**
+
+All the control plane components (kubeapi server, kubelet, kubeproxy, kubescheduler, controller-manager) have same versions but etcd and corends have different versions as they are part of a different project.
+
+**Version upgrade in Kubernetes**
+
+kubeapi server is the heart of all control plane components. So you should always have it as the highest version
+
+Start --> Process 1 -->  Process 2 --> End
+
+
+
+
 
