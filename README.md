@@ -234,3 +234,5 @@ If the kubernetes is setup using kubeadm tool, you have to upgrade the kubeadm t
 
 When setup your cluster using the kubeadm tool all the control plane components will be deployed as pods in master node therefore there is a presence of kubelet on master node when using the kubeadm tool.
 
+Execute the command **kubeadm plan** which lists all the components that gets upgraded and components that will be upgraded manually.
+
