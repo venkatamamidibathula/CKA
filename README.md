@@ -138,8 +138,9 @@ spec:
   containers:
     - name: webserver
       image: nginx
-      port: 443
+      ports:
+        - containerPort: 8080 
     - name: logagent
-      image: splunk
-      port: 8080
+      image: log-agent
+
 ```
