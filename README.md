@@ -10,6 +10,18 @@
 | kubectl drain {nodename}                                | To drain a node in cluster                                    |
 | kubectl cordon {nodename}                               | To make the node as unschedulable                             |
 | kubectl uncordon {nodename}                             | To make the node back as schedulable                          | 
+| cat /etc/*release*                                      | To check the linux distriuction                               | 
+
+---
+
+### ***Scheduling***
+
+----
+#### ****Static Pods****
+
+Static pods are used whenver there is no kube api server or master.
+
+The path where the pod definition files need to be kept is shown below.
 
 ---
 
