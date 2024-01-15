@@ -7,7 +7,7 @@
 
 | Command     | Description |
 |-------------|-------------|
-| kubectl drain {nodename}                                | Created by kubeapi server                                     |
+| kubectl drain {nodename}                                | To drain a node in cluster                                    |
 | kubectl cordon {nodename}                               | To make the node as unschedulable                             |
 | kubectl uncordon {nodename}                             | To make the node back as schedulable                          | 
 
