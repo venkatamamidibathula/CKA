@@ -248,8 +248,9 @@ When setup your cluster using the kubeadm tool all the control plane components 
 
 Execute the command **kubeadm plan** which lists all the components that gets upgraded and components that will be upgraded manually.
 
-Upgrade the controlplane components to exact version v1.27.0
+---
 
+**Process to Upgrade the controlplane components to exact version v1.27.0**
 
 
 **apt update**
@@ -268,4 +269,6 @@ This will update the kubelet with the version 1.27.0
 **systemctl daemon-reload**
 **systemctl restart kubelet**
 You may need to reload the daemon and restart kubelet service after it has been upgraded.
+---
+
 
