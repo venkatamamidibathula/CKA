@@ -128,6 +128,15 @@ data:
 
 **To create a pod definition out a running pod : kubectl get pod <pod-name> --output=yaml > pod-definition.yaml**
 
+**Multi-Container Pods**
+
+Monolithic application is huge and hard to maintain. 
+
+The application needs to be broken down to small micro-services that can be managed easily and scaled up.
+
+In a multi-container pod a webserver and log agent are placed in a single pod sothat the logs agent can collect logs sent by the webserver.
+
+
 ```yaml
 
 apiVersion: v1
