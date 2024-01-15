@@ -128,9 +128,18 @@ data:
 
 **To create a pod definition out a running pod : kubectl get pod <pod-name> --output=yaml > pod-definition.yaml**
 
-```json
-[
-    "~/path_to_pods_1",
-    "~/path_to_pods_2",
-]
+```yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-pod
+spec:
+  containers:
+    - name: webserver
+      image: nginx
+      port: 443
+    - name: logagent
+      image: splunk
+      port: 8080
 ```
