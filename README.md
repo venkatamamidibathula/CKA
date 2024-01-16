@@ -297,7 +297,7 @@ You may need to reload the daemon and restart kubelet service after it has been 
 
 ---
 
-**Backup and Restore Methods
+**Backup and Restore Methods**
 
 ETCDCTL is key-value data store that has the data of entire configuration in kubernetes cluster like info on nodes, pods etc..
 
