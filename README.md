@@ -295,3 +295,51 @@ This will update the kubelet with the version 1.27.0 because kubelet will not up
 **systemctl restart kubelet**
 You may need to reload the daemon and restart kubelet service after it has been upgraded.
 
+---
+
+**Backup and Restore Methods
+
+ETCDCTL is key-value data store that has the data of entire configuration in kubernetes cluster like info on nodes, pods etc..
+
+Backup can be done by getting a entire resoure configuration in a single and restoring the cluster using the below command:
+
+**kubectl get all --all-namespaces -o yaml > configurations.yaml**
+
+The other way of backing up is by using the below methods:
+
+**Querying the kube-api server**
+**Backing up the ETCD cluster**
+
+Most of the times in real time we won't be having access to the ETCD cluster.
+
+Incase we have follow up the below steps to back up the ETCD cluster:
+
+**ETCDCTL_API=3 etcdctl \
+    snapshot save snapshot.db**
+
+A snapshot file by the name snapshot.db is saved in the current directory.
+
+To restore the cluster from this backup.
+First stop the kube-apiserver service
+
+**service kube-apiserver stop**
+
+Restore from backup
+**ETCDCTL_API=3 etcdctl \
+  snapshot restore snapshot.db \
+  --data-dir /var/lib/etcd-from-backup**
+
+When we do this it initializes a new cluster and configures the members as new members in newly created cluster. This is to prevent a new member from accidentally joining a old cluster.
+
+We update the etcd.service file to add the new directory
+--data-dir = /var/lib/etcd-from-backup
+
+Reload the service daemon
+**systemctl reload daemon-reload**
+
+Restart the etcd service
+**service etcd restart**
+
+
+
+
