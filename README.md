@@ -14,6 +14,7 @@
 | kubectl config set-context $(kubectl config current-context) --namespace=dev	| To change context of current context
 | kubectl get pods --all-namespaces                                             | To get pods of all namespaces                                 |
 | kubectl get pods --namespace=prod						| To get pods from prod namespace				|
+| kubectl create namespace {nameofnamespace}					| To create namespace						|
 
 ---
 **Core Concepts**
@@ -21,6 +22,31 @@
 **Namespaces**: Namespaces in Kubernetes are a way to organize and isolate resources within a cluster. Namespaces are useful for separating different environments (e.g., development, testing, production) within the same cluster.
 
 **Set context**: kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+```yaml
+apiVersion: v1
+kind: namespace
+metadata:
+  name: dev
+
+```
+To ensure a specific pod goes to same namespace
+
+```yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-prod
+  namespace: dev
+  labels:
+    - type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
+```
 
 
 ---
