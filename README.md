@@ -7,10 +7,21 @@
 
 | Command     | Description |
 |-------------|-------------|
-| kubectl drain {nodename}                                | To drain a node in cluster                                    |
-| kubectl cordon {nodename}                               | To make the node as unschedulable                             |
-| kubectl uncordon {nodename}                             | To make the node back as schedulable                          | 
-| cat /etc/*release*                                      | To check the linux distriuction                               | 
+| kubectl drain {nodename}                                			| To drain a node in cluster                                    |
+| kubectl cordon {nodename}                               			| To make the node as unschedulable                             |
+| kubectl uncordon {nodename}                             			| To make the node back as schedulable                          | 
+| cat /etc/*release*                                      			| To check the linux distriuction                               |
+| kubectl config set-context $(kubectl config current-context) --namespace=dev	| To change context of current context
+| kubectl get pods --all-namespaces                                             | To get pods of all namespaces                                 |
+| kubectl get pods --namespace=prod						| To get pods from prod namespace				|
+
+---
+**Core Concepts**
+
+**Namespaces**: Namespaces in Kubernetes are a way to organize and isolate resources within a cluster. Namespaces are useful for separating different environments (e.g., development, testing, production) within the same cluster.
+
+**Set context**: kubectl config set-context $(kubectl config current-context) --namespace=dev
+
 
 ---
 
