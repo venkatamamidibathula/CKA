@@ -15,6 +15,9 @@
 | kubectl get pods --all-namespaces                                             | To get pods of all namespaces                                 |
 | kubectl get pods --namespace=prod						| To get pods from prod namespace				|
 | kubectl create namespace {nameofnamespace}					| To create namespace						|
+| kubectl taint node {nodename} key=value:NoSchedule|PreferNoSchedule|NoExecute | To create taint on a specific node                            |
+| kubectl taint node {nodename} key=value:NoSchedule|PreferNoSchedule|NoExecute-| To untaint a tainted node                                     |
+
 
 ---
 **Core Concepts**
@@ -84,6 +87,26 @@ spec:
 ```
 If you want to check a specific taint applied on any node use command **kubectl describe node <nodename> | grep Taint**
 
+**Node Selector**
+
+If you wish to have a pod always go to a specific node, we use nodeSelector. We have to first label the node and use the label in pod definition to ensure the pod always goes to that specific node. This has its limitations so not much preferable.
+
+**kubectl label node node01 app=blue**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
+  nodeSelector:
+    app: blue
+
+```
 
 
 #### ****Static Pods****
