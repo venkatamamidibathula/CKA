@@ -53,18 +53,39 @@ spec:
 
 ### ***Scheduling***
 
-----
-#### ****Static Pods****
+**Taints and Tolerations**
 
-Static pods are used whenver there is no kube api server or master.
+- Taints are applied to nodes and tolerations are applied to Pod.
+- If a pod has toleration to a specific taint on node , then it can reside in that node if not it has to look for other node.
+- There are three categories: **NoSchedule**, **PreferNoSchedule**, **NoExecute**.
 
-The path where the pod definition files need to be kept is shown below.
+Example i tainted a node node01 with NoSchedule like **kubectl taint node node01 app=blue:NoSchedule**
 
----
+If i want to my nginx-pod to tolerate the taint applied on node01
 
-### ***Scheduling***
+```yaml
 
-----
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+  tolerations:
+    - key: "app"
+      operator: "Equal"
+      value: "blue"
+      effect: "NoSchedule"
+
+```
+If you want to check a specific taint applied on any node use command **kubectl describe node <nodename> | grep Taint**
+
+
+
 #### ****Static Pods****
 
 Static pods are used whenver there is no kube api server or master.
