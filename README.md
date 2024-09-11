@@ -108,6 +108,125 @@ spec:
 
 ```
 
+**Node Afiinity**
+
+This addresses the shortcoming of nodeselector where you can use operators like "exists" "in" "and" etc...
+
+There are specifically two node affinity rules that exist predominantly:
+
+- **requiredDuringSchedulingIgnoredDuringExecution**
+- **preferredDuringSchedulingIgnoredDuringExecution**
+
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+	  - matchExpressions:
+	      - key: size
+	        operator: Exists
+
+```
+**Question**: Set Node Affinity to the deployment to place the pods on node01 only.
+
+- Name: blue
+
+- Replicas: 3
+
+- Image: nginx
+
+- NodeAffinity: requiredDuringSchedulingIgnoredDuringExecution
+
+- Key: color
+
+- value: blue
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: blue
+  name: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blue
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: blue
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: color
+                    operator: In
+                    values:
+                      - blue
+
+status: {}
+
+```
+
+**Question 2** : Create a new deployment named red with the nginx image and 2 replicas, and ensure it gets placed on the controlplane node only.
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: red
+  name: red
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: red
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: red
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: node-role.kubernetes.io/control-plane
+                  operator: Exists
+status: {}
+
+```
 
 #### ****Static Pods****
 
