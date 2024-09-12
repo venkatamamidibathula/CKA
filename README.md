@@ -227,6 +227,97 @@ spec:
 status: {}
 
 ```
+**Resource Limits and requests**
+
+Question: The elephant pod runs a process that consumes 15Mi of memory. Increase the limit of the elephant pod to 20Mi.
+
+- Pod Name: elephant
+
+- Image Name: polinux/stress
+
+- Memory Limit: 20Mi
+
+
+```yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod
+  name: elephant
+spec:
+  containers:
+  - args:
+    - elephant
+    image: polinux/stress
+    name: pod
+    resources:
+      limits:
+        memory: 20Mi
+      requests:
+        memory: 10Mi
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+```
+
+**Dameon Sets**
+
+- DaemonSets are a Kubernetes resource that ensure a copy of a Pod runs on all (or some) nodes in a cluster. Here are the key points about DaemonSets.
+- When a new node is added to the cluster, the DaemonSet automatically creates a Pod on that node.
+
+- Running node monitoring daemons like Prometheus Node Exporter, collectd, or Datadog agent.
+
+
+
+Tricks to create daemonset instead of memorizing the entire yaml:
+
+First, create a Deployment template using kubectl create:
+kubectl create deployment my-daemonset --image=your-image:tag --dry-run=client -o yaml > daemonset.yaml
+
+Open the daemonset.yaml file in a text editor and make the following changes:
+- Change kind: Deployment to kind: DaemonSet
+- Remove the replicas: field
+- Remove the entire strategy: section
+
+**Question**: Deploy a DaemonSet for FluentD Logging.
+
+- Name: elasticsearch
+- Namespace: kube-system
+- Image: registry.k8s.io/fluentd-elasticsearch:1.20
+
+```yaml
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-daemonset
+  name: elasticsearch
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: my-daemonset
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-daemonset
+    spec:
+      containers:
+      - image: registry.k8s.io/fluentd-elasticsearch:1.20
+        name: elasticsearch
+        resources: {}
+status: {}
+
+```
+
+
 
 #### ****Static Pods****
 
@@ -237,6 +328,13 @@ The path where the pod definition files need to be kept is shown below.
 **Path** = **/etc/kubernetes/manifests**
 
 We can only create PODS this way not replicasets, deployments.
+
+The kubelet automatically tries to create a mirror Pod on the Kubernetes API server for each static Pod, making them visible but not controllable from there.
+To edit a static Pod, modify the manifest file in the designated directory.
+To delete a static Pod, remove the manifest file from the directory.
+
+Kubernetes control plane bootstrapping: Used by tools like kubeadm to bring up control plane components (e.g., API server, controller manager) as static pods.
+Running essential services on specific nodes without relying on the API server.
 
 In **kubelet.service** file there is a parameter where you specify the value.
 
