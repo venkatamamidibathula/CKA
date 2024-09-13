@@ -409,6 +409,8 @@ To undo the rollout of deployment we use the command **kubectl rollout undo {nam
 **ENTRYPOINT** parameter in docker works in a way where in the run time parameters get appended to entrypoint command.
 
 
+![Alt Text](CommandsandArgumentsinKuberenetes.PNG)
+
 > docker file: ubuntusleep
 >
 > from ubuntu
