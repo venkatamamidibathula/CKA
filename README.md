@@ -16,6 +16,161 @@
 
 ### ***Scheduling***
 
+---
+
+### ****Taints and Tolerations****
+
+Taints are applied to nodes and tolerations are applied to pods.
+
+- When a node is tainted it means the node is not available for pods and only pods with toleration to taint can be scheduled on tainted node.
+- When a pod is have a specific toleration it can very well go into the tainted node if not it will have to look for other nodes.
+
+To taint a node
+
+**Command**: kubectl taint node <nodename> key=value:taint-effect
+
+taint effects can be NoSchedule|PreferNoSchedule|NoExecute
+
+```yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  labels:
+    - name: nginx-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+  tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "Blue"
+    effect: "NoSchedule"
+```
+
+To check if taints exist on node : **kubectl describe node node01 | grep Taint**  
+
+
+---
+#### ****Node Affinity****
+
+
+***Question***:Set Node Affinity to the deployment to place the pods on node01 only.
+
+Name: blue
+
+Replicas: 3
+
+Image: nginx
+
+NodeAffinity: requiredDuringSchedulingIgnoredDuringExecution
+
+Key: color
+
+value: blue
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: blue
+  name: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blue
+  template:
+    metadata:
+      labels:
+        app: blue
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: color
+                operator: In
+                values:
+                - blue
+
+
+
+```
+**Question**
+Create a new deployment named red with the nginx image and 2 replicas, and ensure it gets placed on the controlplane node only.
+
+Use the label key - node-role.kubernetes.io/control-plane - which is already set on the controlplane node.
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: nginx
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+---
+
+### ****Requests and Limits****
+
+
+**Limit Ranges** : Help set for default values set for containers in pod. Its set at namespace level.
+
+![requestlimits](requestlimts.png)
+
+
+**Resource Quotas**: Total number of resources to be consumed can be restricted using resource quota.
+
+
+![resourcequotas](resourcequota.png)
+
+
+
+
 ----
 #### ****Static Pods****
 
