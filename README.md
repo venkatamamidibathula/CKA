@@ -213,6 +213,8 @@ In **kubelet.service** file there is a parameter where you specify the value.
 | Ignored by kube-scheduler                          | Ignored by kube-scheduler                                     | 
 
 
+**To create a static pod definition file**: kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
 ---
 
 ### ***Logging and Monitoring***
