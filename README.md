@@ -497,6 +497,21 @@ Reload the service daemon
 Restart the etcd service
 **service etcd restart**
 
+---
+
+**Security**
+
+**Authorization**
+
+Node;ABAC;RBAC;Webhook
+
+RBAC: Where you create a role and assign this role to user.
+
+Webhook: If you want to delegate the job of authorization to external entity like openconnect we use webhook.
+
+RBAC: Role->Rolebinding->User
+
+Role includes apiGroups,resources,verbs,resourcenames
 
 
 
