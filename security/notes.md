@@ -17,4 +17,29 @@
 
 **kube-apiserver**
 
+RBAC: Role Based Access control
+
+Users are assigned specific roles.
+
+Roles are created and role bindings are created which map roles to users
+
+**developer role**
+
+```yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create","view","list","get"]
+  resourceNames: ["blue","orange"]
+- apiGroups: [""]
+  resource: ["replicasets"]
+  verbs: ["create","view","list","get"]
+  resourceNames: ["blue","orange"]
+
+```
 
