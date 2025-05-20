@@ -39,7 +39,25 @@ rules:
 - apiGroups: [""]
   resource: ["replicasets"]
   verbs: ["create","view","list","get"]
-  resourceNames: ["blue","orange"]
+
+```
+**role binding**
+
+```yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devuser-developer-binding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+
 
 ```
 
