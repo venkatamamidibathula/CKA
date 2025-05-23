@@ -61,3 +61,19 @@ roleRef:
 
 ```
 
+**Roles** and **Role Bindings** are namespace scoped.
+Unless and until specified roles and rolebindings will be associated to default namespace.
+
+**Cluster roles** and **Cluster role bindings** are cluster scoped.
+Cluster roles and Cluster role bindings are scoped to a cluster. If you create a cluster role to view pods. When a user is assigned this role he will be able to view pods across the cluster.
+
+To view roles in namespaces
+
+- **kubectl api-resouces --namespaces=true**
+
+To view roles outside namespaces
+
+- **kubectl api-resources --namespaces=false**
+
+
+
