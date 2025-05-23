@@ -108,3 +108,59 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ```
+
+Example Question:
+
+A new user michelle joined the team. She will be focusing on the nodes in the cluster. Create the required ClusterRoles and ClusterRoleBindings so she gets access to the nodes.
+
+
+Fist step create cluster role:
+
+- kubectl create clusterrole node-adminrole --verb=* --resource=nodes --dry-run=client -o yaml > nod
+erole.yaml
+
+Second step create cluster role binding:
+
+- kubectl create rolebinding michelle-binding --clusterrole=node-adminrole --user=michelle --namespace=default --dry-run=client -o yaml > nodebinding.yaml
+
+Third step
+
+- run kubectl apply -f .
+
+Example Question:
+
+
+michelle's responsibilities are growing and now she will be responsible for storage as well. Create the required ClusterRoles and ClusterRoleBindings to allow her access to Storage.
+
+
+Get the API groups and resource names from command kubectl api-resources. Use the given spec:
+
+
+
+ClusterRole: storage-admin
+
+Resource: persistentvolumes
+
+Resource: storageclasses
+
+ClusterRoleBinding: michelle-storage-admin
+
+ClusterRoleBinding Subject: michelle
+
+ClusterRoleBinding Role: storage-admin
+
+
+
+
+Solution:
+
+- Create a cluster role
+kubectl create clusterrole storage-admin --resource=persistentvolumes,storageclasses --verb=* --dry-run=client -o yaml > storageadmin.yaml
+
+- Create a cluster role binding
+
+kubectl create clusterrolebinding michelle-storage-admin --user=michelle --clusterrole=storage-admin --dry-run=client -o yaml > storageclusterbindadmin.yaml
+
+- Run apply
+
+kubectl apply -f .
